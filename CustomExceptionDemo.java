@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+class InvalidNameException extends RuntimeException {
+    public InvalidNameException(String mess) {
+        super(mess);
+    }
+}
+
+class InvalidPasswordException extends RuntimeException {
+    public InvalidPasswordException(String mess) {
+        super(mess);
+    }
+}
+
+class CustomExceptionDemo {
+
+    public static void main(String[] args) {
+        String username, passWord;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter User name:");
+        username = scanner.nextLine();
+
+        System.out.println("Enter Password:");
+        passWord = scanner.nextLine();
+
+        try {
+            if (!username.equals("admin")) {
+                throw new InvalidNameException("Invalid User name");
+            }
+
+            if (!passWord.equals("admin")) {
+                throw new InvalidPasswordException("Invalid password");
+            }
+
+            // Success case
+            System.out.println("Login Successful");
+
+        } catch (InvalidNameException e) {
+            System.out.println("Run Time Error: " + e.getMessage());
+
+        } catch (InvalidPasswordException e) {
+            System.out.println("Run Time Error: " + e.getMessage());
+
+        } finally {
+            System.out.println("End of Program");
+        }
+
+        scanner.close();
+    }
+}

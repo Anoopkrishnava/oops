@@ -1,0 +1,1 @@
+This program demonstrates write into a file from console.if file does not exist ,java creates a new file.if file exist.it will overwrite.
