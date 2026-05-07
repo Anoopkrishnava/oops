@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+class Account {
+    String name;
+    int accno;
+    double balance;
+
+    Scanner sc = new Scanner(System.in);
+
+    // Method to take input
+    void getData() {
+        System.out.print("Enter name: ");
+        name = sc.nextLine();
+
+        System.out.print("Enter account number: ");
+        accno = sc.nextInt();
+
+        System.out.print("Enter initial balance: ");
+        balance = sc.nextDouble();
+    }
+
+    // Deposit method
+    void deposit(double amount) {
+        balance = balance + amount;
+        System.out.println("Amount deposited: " + amount);
+    }
+
+    // Get balance
+    void getBalance() {
+        System.out.println("Name: " + name);
+        System.out.println("Account No: " + accno);
+        System.out.println("Current balance: " + balance);
+    }
+}
+
+// SavingsAccount inherits Account
+class SavingsAccount extends Account {
+    double interestRate = 0.05;
+
+    // Override deposit method
+    void deposit(double amount) {
+        super.deposit(amount);  // call parent method
+        double interest = amount * interestRate;
+        balance = balance + interest;
+        System.out.println("Interest added: " + interest);
+    }
+}
+
+// SpecialSavings inherits SavingsAccount
+class SpecialSavings extends SavingsAccount {
+
+    void withdraw(double amount) {
+        double minBalance = 500;
+
+        if (balance - amount < minBalance) {
+            double penalty = 50;
+            balance = balance - amount - penalty;
+            System.out.println("Penalty applied: " + penalty);
+        } else {
+            balance = balance - amount;
+        }
+
+        System.out.println("Amount withdrawn: " + amount);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+
+        SpecialSavings obj = new SpecialSavings();
+        Scanner sc = new Scanner(System.in);
+
+        obj.getData();  // take user input
+
+        System.out.print("Enter deposit amount: ");
+        double d = sc.nextDouble();
+        obj.deposit(d);
+
+        obj.getBalance();
+
+        System.out.print("Enter withdraw amount: ");
+        double w = sc.nextDouble();
+        obj.withdraw(w);
+
+        obj.getBalance();
+    }
+}
