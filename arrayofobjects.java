@@ -1,17 +1,48 @@
-public class arrayofobjects {
-   arrayofobjects(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-    int id;
-    String name;
-    public static void main(String[] args) {
-        arrayofobjects[] arr = new arrayofobjects[3];
-        arr[0] = new arrayofobjects(1, "Alice");
-        arr[1] = new arrayofobjects(2, "Bob");
-        arr[2] = new arrayofobjects(3, "Charlie");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println("ID: " + arr[i].id + ", Name: " + arr[i].name);
-        }
-    } 
+import java.util.*;
+class Employee
+{
+Scanner sc=new Scanner(System.in);
+int eNo;
+String eName;
+double eSalary;
+Employee(int n)
+{
+System.out.println("\t\t\tEnter Details for Employee "+n);
+System.out.print("Enter Employee Number: ");
+eNo=sc.nextInt();
+System.out.print("Enter Employee Name: ");
+eName=sc.next();
+System.out.print("Enter Salary: ");
+eSalary=sc.nextDouble();
+}
+}
+class arrayofobjects2
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+System.out.print("Enter number of employees: ");
+int n=sc.nextInt();
+Employee e[]=new Employee[n];
+for(int i=0; i<n; i++)
+{
+e[i]=new Employee(i+1);
+}
+System.out.println("\n");
+//System.out.print("\nEnter Employee Number to search: ");
+//int num=sc.nextInt();
+//int c=0;
+for(int i=0; i<n; i++)
+{
+//if(e[i].eNo==num)
+//{
+System.out.println("\nEmployee Name: "+e[i].eName+"\nSalary: "+e[i].eSalary);
+//c=1;
+//}
+}
+/*
+if(c==0)
+System.out.println("Employee Not Registered!!!");
+*/
+}
 }
